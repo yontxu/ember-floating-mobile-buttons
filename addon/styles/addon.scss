@@ -1,0 +1,126 @@
+$number-of-child-buttons: 5;
+$button-space: -70px;
+
+.float-buttons{
+  box-sizing: border-box;
+  margin: 1em;
+  position: fixed;
+  white-space: nowrap;
+  z-index: 99;
+  padding-left: 0;
+  list-style: none;
+  bottom: 0;
+  right: 0;
+  display: none;
+  ul, li{
+    margin: 0;
+    padding: 0;
+  }
+  li{
+    list-style: none;
+    margin-top: 1em;
+    &:first-child{
+      margin-top: 0;
+    }
+  }
+  &.active {
+    display: block;
+    animation: fromBottom 1.6s 1;
+    -webkit-animation: fromBottom 1.6s 1;
+  }
+  .float-button{
+    position: relative;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    margin: 0;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    -webkit-user-drag: none;
+    i{
+      font-size: 18px;
+      text-align: center;
+      line-height: 56px;
+
+      -webkit-transition: -webkit-transform 150ms cubic-bezier(.4, 0, 1, 1);
+      transition: transform 150ms cubic-bezier(.4, 0, 1, 1);
+    }
+    &.disabled{
+      i {
+        -webkit-transform: scale(1) rotate(0deg);
+        transform: scale(1) rotate(0deg);
+      }
+    }
+    &.enabled{
+      i {
+        -webkit-transform: scale(1) rotate(45deg);
+        transform: scale(1) rotate(45deg);
+      }
+    }
+  }
+  .float-button-label{
+    margin-right: 1em;
+    font-size: 80%;
+    display: inline-block;
+    color: white;
+    background-color: darken(#767676, 20);
+    border-radius: 3px;
+    padding: 0 5px;
+    &:after{
+      content: '';
+      position: absolute;
+      border-left: 10px solid #767676;
+      border-top: 11px solid transparent;
+      border-bottom: 10px solid transparent;
+      top: 2px;
+      right: -10px;
+    }
+  }
+  .float-button-wrapper{
+    li{
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      &>label{
+        position: absolute;
+        top: 15px;
+        right: 60px;
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 0;
+        transition: all .5s;
+        transition-delay: ($number-of-child-buttons) * 0.05s;
+      }
+    }
+    @for $i from 1 through $number-of-child-buttons {
+      $distance: $button-space * $i;
+      li:nth-child( #{$i} ) {
+        -webkit-transform: translateY($distance) scale(0);
+        transform: translateY($distance) scale(0);
+        transition: all .5s;
+        transition-delay: ( $number-of-child-buttons - $i ) * 0.05s;
+      }
+    }
+    &.enabled{
+      @for $i from 1 through $number-of-child-buttons {
+        $distance: $button-space * $i;
+        li:nth-child( #{$i} ) {
+          -webkit-transform: translateY($distance) scale(1);
+          transform: translateY($distance) scale(1);
+        }
+      }
+      li{
+        &>label{
+          -webkit-transform: scale(1);
+          transform: scale(1);
+          opacity: .8;
+        }
+      }
+    }
+  }
+  .modal-backdrop{
+    z-index: -1;
+  }
+}
