@@ -1,0 +1,1 @@
+export { default } from 'ember-floating-mobile-buttons/components/floating-mobile-buttons';
