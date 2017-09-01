@@ -1,7 +1,7 @@
 $number-of-child-buttons: 5;
 $button-space: -70px;
 
-.float-buttons{
+.floating-buttons{
   box-sizing: border-box;
   margin: 1em;
   position: fixed;
@@ -28,7 +28,7 @@ $button-space: -70px;
     animation: fromBottom 1.6s 1;
     -webkit-animation: fromBottom 1.6s 1;
   }
-  .float-button{
+  .floating-button{
     position: relative;
     width: 56px;
     height: 56px;
@@ -60,7 +60,7 @@ $button-space: -70px;
       }
     }
   }
-  .float-button-label{
+  .floating-button-label{
     margin-right: 1em;
     font-size: 80%;
     display: inline-block;
@@ -78,7 +78,7 @@ $button-space: -70px;
       right: -10px;
     }
   }
-  .float-button-wrapper{
+  .floating-button-wrapper{
     li{
       position: absolute;
       bottom: 0;
@@ -120,7 +120,7 @@ $button-space: -70px;
       }
     }
   }
-  .modal-backdrop{
+  .floating-button-backdrop{
     z-index: -1;
   }
 }
