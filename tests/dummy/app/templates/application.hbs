@@ -1,0 +1,16 @@
+{{#floating-mobile-buttons}}
+  {{#floating-mobile-child-buttons as |buttonActive toggleButtons|}}
+    <ul class="floating-button-wrapper">
+      {{#floating-mobile-child-buttons label="Add Item"}}
+        <a href>{{fa-icon "home"}}</a>
+      {{/floating-mobile-child-buttons}}
+      {{#floating-mobile-child-buttons label="Remove Item"}}
+        <a href>{{fa-icon "bin"}}</a>
+      {{/floating-mobile-child-buttons}}
+      {{#floating-mobile-child-buttons label="Edit Item"}}
+        <a href>{{fa-icon "pencil"}}</a>
+      {{/floating-mobile-child-buttons}}
+    </ul>
+    <button>{{fa-icon "plus"}}</button>
+  {{/floating-mobile-child-buttons}}
+{{/floating-mobile-buttons}}
