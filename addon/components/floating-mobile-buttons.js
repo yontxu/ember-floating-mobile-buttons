@@ -6,6 +6,7 @@ export default Ember.Component.extend({
   classNameBindings: ['active:active'],
   active: false,
   didInsertElement(){
+    this._super(...arguments);
     this.set('active', true);
   }
 });
