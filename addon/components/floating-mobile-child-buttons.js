@@ -1,16 +1,13 @@
 import Ember from 'ember';
+import layout from '../templates/components/floating-mobile-child-buttons';
 
 export default Ember.Component.extend({
+  layout,
   tagName: 'li',
-  active:false,
-  buttonClassNames: 'pure-button pure-button-primary floating-button',
-  init(){
+  classNames: ['floating-child-button'],
+  buttonClassNames: 'floating-button',
+  didInsertElement(){
     this._super(...arguments);
-    Ember.$('button, a').addClass(this.get('buttonClassNames'));
-  },
-  actions: {
-    toggleButtons() {
-      this.toggleProperty('active');
-    }
+    Ember.$('button,a').addClass(this.get('buttonClassNames'));
   }
 });

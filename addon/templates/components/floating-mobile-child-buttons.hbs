@@ -1,7 +1,4 @@
-{{#if active}}
-  <div class="floating-button-backdrop" {{action "toggleButtons"}}></div>
-{{/if}}
 {{#if label}}
   <label class="floating-button-label">{{label}}</label>
 {{/if}}
-{{yield active (action "toggleButtons")}}
+{{yield}}
