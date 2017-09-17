@@ -1,16 +1,15 @@
 $number-of-child-buttons: 5;
-$button-space: -70px;
+$button-space: 70px;
+$z-index: 99;
 
 .floating-buttons{
   box-sizing: border-box;
   margin: 1em;
+  padding: 0;
   position: fixed;
   white-space: nowrap;
-  z-index: 99;
-  padding-left: 0;
+  z-index: $z-index;
   list-style: none;
-  bottom: 0;
-  right: 0;
   display: none;
   ul, li{
     margin: 0;
@@ -18,18 +17,13 @@ $button-space: -70px;
   }
   li{
     list-style: none;
-    margin-top: 1em;
-    &:first-child{
-      margin-top: 0;
-    }
   }
   &.active {
     display: block;
-    animation: fromBottom 1.6s 1;
-    -webkit-animation: fromBottom 1.6s 1;
   }
   .floating-button{
     position: relative;
+    display: inline-block;
     width: 56px;
     height: 56px;
     border-radius: 50%;
@@ -38,7 +32,10 @@ $button-space: -70px;
     cursor: pointer;
     outline: none;
     padding: 0;
+    text-align: center;
     -webkit-user-drag: none;
+    background-color: #4183ea;
+    color: white;
     i{
       font-size: 18px;
       text-align: center;
@@ -46,6 +43,9 @@ $button-space: -70px;
 
       -webkit-transition: -webkit-transform 150ms cubic-bezier(.4, 0, 1, 1);
       transition: transform 150ms cubic-bezier(.4, 0, 1, 1);
+    }
+    &:active{
+      border-style: none;
     }
     &.disabled{
       i {
@@ -68,21 +68,23 @@ $button-space: -70px;
     background-color: darken(#767676, 20);
     border-radius: 3px;
     padding: 0 5px;
+    position: relative;
+    height: 21px;
+    line-height: 21px;
     &:after{
       content: '';
       position: absolute;
-      border-left: 10px solid #767676;
+      border-left: 10px solid darken(#767676, 20);
       border-top: 11px solid transparent;
       border-bottom: 10px solid transparent;
-      top: 2px;
-      right: -10px;
+      top: 0;
+      right: -9px;
     }
   }
   .floating-button-wrapper{
-    li{
+    .floating-child-button{
       position: absolute;
-      bottom: 0;
-      right: 0;
+      //margin-top: 1em;
       &>label{
         position: absolute;
         top: 15px;
@@ -94,24 +96,9 @@ $button-space: -70px;
         transition-delay: ($number-of-child-buttons) * 0.05s;
       }
     }
-    @for $i from 1 through $number-of-child-buttons {
-      $distance: $button-space * $i;
-      li:nth-child( #{$i} ) {
-        -webkit-transform: translateY($distance) scale(0);
-        transform: translateY($distance) scale(0);
-        transition: all .5s;
-        transition-delay: ( $number-of-child-buttons - $i ) * 0.05s;
-      }
-    }
+
     &.enabled{
-      @for $i from 1 through $number-of-child-buttons {
-        $distance: $button-space * $i;
-        li:nth-child( #{$i} ) {
-          -webkit-transform: translateY($distance) scale(1);
-          transform: translateY($distance) scale(1);
-        }
-      }
-      li{
+      .floating-child-button{
         &>label{
           -webkit-transform: scale(1);
           transform: scale(1);
@@ -121,6 +108,120 @@ $button-space: -70px;
     }
   }
   .floating-button-backdrop{
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
     z-index: -1;
+  }
+  &.top{
+    top:0;
+    &.active{
+      animation: fromTop 1.6s 1;
+      -webkit-animation: fromTop 1.6s 1;
+    }
+    .floating-button-wrapper{
+      .floating-child-button{
+        top: 0;
+        &:first-child{
+          //margin-top: 0;
+        }
+      }
+      @for $i from 0 through $number-of-child-buttons {
+        $distance: $button-space * $i;
+        .floating-child-button:nth-child( #{$i} ) {
+          -webkit-transform: translateY($distance) scale(0);
+          transform: translateY($distance) scale(0);
+          transition: all .5s;
+          transition-delay: ( $number-of-child-buttons - $i ) * 0.05s;
+        }
+      }
+      &.enabled{
+        @for $i from 1 through $number-of-child-buttons {
+          $distance: $button-space * $i;
+          .floating-child-button:nth-child( #{$i} ) {
+            -webkit-transform: translateY($distance) scale(1);
+            transform: translateY($distance) scale(1);
+          }
+        }
+      }
+    }
+  },
+  &.bottom{
+    bottom:0;
+    &.active{
+      animation: fromBottom 1.6s 1;
+      -webkit-animation: fromBottom 1.6s 1;
+    }
+    .floating-button-wrapper{
+      .floating-child-button {
+        bottom: 0;
+      }
+      @for $i from 0 through $number-of-child-buttons {
+        $distance: $button-space * $i * -1;
+        .floating-child-button:nth-child( #{$i} ) {
+          -webkit-transform: translateY($distance) scale(0);
+          transform: translateY($distance) scale(0);
+          transition: all .5s;
+          transition-delay: ( $number-of-child-buttons - $i ) * 0.05s;
+        }
+      }
+      &.enabled{
+        @for $i from 1 through $number-of-child-buttons {
+          $distance: $button-space * $i * -1;
+          .floating-child-button:nth-child( #{$i} ) {
+            -webkit-transform: translateY($distance) scale(1);
+            transform: translateY($distance) scale(1);
+          }
+        }
+      }
+    }
+  }
+  &.left{
+    left:0;
+    .floating-button-wrapper {
+      .floating-child-button {
+        left: 0;
+      }
+    }
+  }
+  &.right{
+    right:0;
+    .floating-button-wrapper {
+      .floating-child-button {
+        right: 0;
+      }
+    }
+  }
+
+}
+
+@keyframes fromBottom {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(2500px);
+    transform: translateY(2500px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform:  translateY(0);
+    transform:  translateY(0);
+  }
+}
+
+@keyframes fromTop {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-2500px);
+    transform: translateY(-2500px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform:  translateY(0);
+    transform:  translateY(0);
   }
 }
