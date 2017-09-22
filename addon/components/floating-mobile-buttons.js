@@ -9,11 +9,28 @@ export default Ember.Component.extend({
   active: false,
   childrenActive: false,
   hasChildren: false,
+  position: 'bottom right',
   didReceiveAttrs(){
     this._super(...arguments);
-    if(Ember.typeOf(this.get('bottom')) !== 'undefined'){
-      this.set('bottom', true);
+    let classes = this.get('position').trim().split(" ");
+    let vClasses = classes.filter( c => {
+      if(c.match(/(bottom|top)/i)){
+        return c;
+      }
+    });
+    let hClasses = classes.filter( c => {
+      if(c.match(/(right|left)/i)){
+        return c;
+      }
+    });
+
+    if(vClasses.length === 0 || vClasses.length > 1 || hClasses.length === 0 || hClasses.length > 1){
+      Ember.assert('The position property must be a string with the values top|bottom and left|right.');
     }
+
+    classes.forEach( c => {
+        this.set(c, true);
+    });
   },
   didInsertElement(){
     this._super(...arguments);
@@ -24,7 +41,7 @@ export default Ember.Component.extend({
   },
   actions: {
     toggleChildren(){
-      this.toggleProperty('childrenActive')
+      this.toggleProperty('childrenActive');
     }
   }
 });

@@ -23,3 +23,31 @@ test('it renders', function(assert) {
 
   assert.equal(this.$().text().trim(), 'template block text');
 });
+
+test('it displays "button" and "right" classes by default', function(assert) {
+  this.render(hbs`{{floating-mobile-buttons}}`);
+
+  assert.ok(this.$('ul').hasClass('bottom'), 'has class "bottom" by default');
+  assert.ok(this.$('ul').hasClass('right'), 'has class "right" by default');
+});
+
+test('it displays the classes passed in the position property', function(assert) {
+  this.render(hbs`{{floating-mobile-buttons position="top left"}}`);
+
+  assert.ok(this.$('ul').hasClass('top'), 'has class "top" by default');
+  assert.ok(this.$('ul').hasClass('left'), 'has class "left" by default');
+});
+
+test('it should trim position param', function(assert) {
+  this.render(hbs`{{floating-mobile-buttons position=" top  left "}}`);
+
+  assert.ok(this.$('ul').hasClass('top'), 'has class "top" by default');
+  assert.ok(this.$('ul').hasClass('left'), 'has class "left" by default');
+});
+
+test('it throws an error if the passed position property is not correct', function(assert) {
+
+  assert.expectAssertion(() => {
+      this.render(hbs`{{floating-mobile-buttons position="test"}}`);
+    }, 'The position property must be a string with the values top|bottom and left|right.');
+});
