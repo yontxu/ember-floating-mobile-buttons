@@ -61,7 +61,6 @@ $z-index: 99;
     }
   }
   .floating-button-label{
-    margin-right: 1em;
     font-size: 80%;
     display: inline-block;
     color: white;
@@ -74,21 +73,15 @@ $z-index: 99;
     &:after{
       content: '';
       position: absolute;
-      border-left: 10px solid darken(#767676, 20);
-      border-top: 11px solid transparent;
-      border-bottom: 10px solid transparent;
       top: 0;
-      right: -9px;
     }
   }
   .floating-button-wrapper{
     .floating-child-button{
       position: absolute;
-      //margin-top: 1em;
       &>label{
         position: absolute;
         top: 15px;
-        right: 60px;
         -webkit-transform: scale(0);
         transform: scale(0);
         opacity: 0;
@@ -125,12 +118,6 @@ $z-index: 99;
       -webkit-animation: fromTop 1.6s 1;
     }
     .floating-button-wrapper{
-      .floating-child-button{
-        top: 0;
-        &:first-child{
-          //margin-top: 0;
-        }
-      }
       @for $i from 0 through $number-of-child-buttons {
         $distance: $button-space * $i;
         .floating-child-button:nth-child( #{$i} ) {
@@ -150,7 +137,7 @@ $z-index: 99;
         }
       }
     }
-  },
+  }
   &.bottom{
     bottom:0;
     &.active{
@@ -158,9 +145,6 @@ $z-index: 99;
       -webkit-animation: fromBottom 1.6s 1;
     }
     .floating-button-wrapper{
-      .floating-child-button {
-        bottom: 0;
-      }
       @for $i from 0 through $number-of-child-buttons {
         $distance: $button-space * $i * -1;
         .floating-child-button:nth-child( #{$i} ) {
@@ -183,17 +167,41 @@ $z-index: 99;
   }
   &.left{
     left:0;
+    .floating-button-label{
+      margin-left: 1em;
+      &:after{
+        border-right: 10px solid darken(#767676, 20);
+        border-top: 11px solid transparent;
+        border-bottom: 10px solid transparent;
+        left: -9px;
+      }
+    }
     .floating-button-wrapper {
       .floating-child-button {
         left: 0;
+        &>label{
+          left: 60px;
+        }
       }
     }
   }
   &.right{
     right:0;
+    .floating-button-label{
+      margin-right: 1em;
+      &:after{
+        border-left: 10px solid darken(#767676, 20);
+        border-top: 11px solid transparent;
+        border-bottom: 10px solid transparent;
+        right: -9px;
+      }
+    }
     .floating-button-wrapper {
       .floating-child-button {
         right: 0;
+        &>label{
+          right: 60px;
+        }
       }
     }
   }
