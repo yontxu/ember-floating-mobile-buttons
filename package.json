@@ -1,12 +1,15 @@
 {
   "name": "ember-floating-mobile-buttons",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "button",
+    "floating button",
+    "mobile floating button"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "Yon Zubizarreta",
   "directories": {
     "doc": "doc",
     "test": "tests"
