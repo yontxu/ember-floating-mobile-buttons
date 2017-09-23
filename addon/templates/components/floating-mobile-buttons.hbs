@@ -8,5 +8,7 @@
     <button {{action "toggleChildren"}} class="pure-button pure-button-primary floating-button {{if childrenActive "enabled" "disabled"}}" >PLUS</button>
   </li>
 {{else}}
-  {{yield}}
+  <li>
+    {{yield}}
+  </li>
 {{/if}}
