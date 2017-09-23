@@ -5,7 +5,9 @@
     {{/floating-mobile-children-wrapper}}
   </li>
   <li>
-    <button {{action "toggleChildren"}} class="pure-button pure-button-primary floating-button {{if childrenActive "enabled" "disabled"}}" >PLUS</button>
+    <button {{action "toggleChildren"}} class="pure-button pure-button-primary floating-button {{if childrenActive "enabled" "disabled"}}" >
+      <span class="floating-button-icon-plus"></span>
+    </button>
   </li>
 {{else}}
   <li>
