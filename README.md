@@ -1,13 +1,49 @@
-# ember-floating-mobile-buttons
+#Ember Floating Mobile Buttons
 
-This README outlines the details of collaborating on this Ember addon.
+Stylish and easy to use Ember floating buttons
 
-## Installation
+##Installation
 
-* `git clone <repository-url>` this repository
-* `cd ember-floating-mobile-buttons`
-* `npm install`
-* `bower install`
+```
+ember install ember-floating-mobile-buttons
+```
+
+##Usage
+
+Define a simple floating button.
+```hbs
+{{#floating-mobile-buttons}}
+    <a href>{{fa-icon "pencil"}}</a>
+{{/floating-mobile-buttons}}
+```
+
+You can additionally define child buttons which will be display grouped by the parent button.
+
+```hbs
+{{#floating-mobile-buttons position="bottom right"}}
+    {{#floating-mobile-child-buttons label="Add Item"}}
+      <a href>{{fa-icon "user"}}</a>
+    {{/floating-mobile-child-buttons}}
+    {{#floating-mobile-child-buttons label="Remove Item"}}
+      <a href>{{fa-icon "trash-o"}}</a>
+    {{/floating-mobile-child-buttons}}
+    {{#floating-mobile-child-buttons label="Edit Item"}}
+      <a href>{{fa-icon "pencil"}}</a>
+    {{/floating-mobile-child-buttons}}
+{{/floating-mobile-buttons}}
+```
+As seen in the example above, you can combine it with you own icons.
+
+##Properties
+
+###Position
+The fixed position of the floating button.
+
+The available list por position:
+* bottom right (default) 
+* bottom left
+* top right
+* top left
 
 ## Running
 
