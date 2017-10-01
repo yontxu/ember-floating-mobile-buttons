@@ -10,7 +10,7 @@
     </button>
   </li>
 {{else}}
-  <li>
+  {{#floating-mobile-child-buttons}}
     {{yield}}
-  </li>
+  {{/floating-mobile-child-buttons}}
 {{/if}}

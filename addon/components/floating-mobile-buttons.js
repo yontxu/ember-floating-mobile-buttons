@@ -35,7 +35,8 @@ export default Ember.Component.extend({
   didInsertElement(){
     this._super(...arguments);
     this.set('active', true);
-    if(Ember.$(`#${this.get('elementId')} .floating-child-button`).length > 0){
+
+    if(Ember.$(`#${this.get('elementId')} .floating-child-button`).length > 1){
       this.set('hasChildren', true);
     }
   },
