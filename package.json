@@ -1,7 +1,7 @@
 {
   "name": "ember-floating-mobile-buttons",
   "version": "0.0.1",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Stylish and easy to use Ember floating buttons.",
   "keywords": [
     "ember-addon",
     "button",
