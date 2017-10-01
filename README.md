@@ -1,14 +1,14 @@
-#Ember Floating Mobile Buttons
+# Ember Floating Mobile Buttons
 
 Stylish and easy to use Ember floating buttons
 
-##Installation
+## Installation
 
 ```
 ember install ember-floating-mobile-buttons
 ```
 
-##Usage
+## Usage
 
 Define a simple floating button.
 ```hbs
@@ -34,9 +34,9 @@ You can additionally define child buttons which will be display grouped by the p
 ```
 As seen in the example above, you can combine it with you own icons.
 
-##Properties
+## Properties
 
-###Position
+### Position
 The fixed position of the floating button.
 
 The available list por position:
