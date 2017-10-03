@@ -1,6 +1,7 @@
 # Ember Floating Mobile Buttons
 
 [![Build Status](https://travis-ci.org/yontxu/ember-floating-mobile-buttons.svg?branch=master)](https://travis-ci.org/yontxu/ember-floating-mobile-buttons)
+[![npm](https://img.shields.io/npm/dm/ember-floating-mobile-buttons.svg)](https://www.npmjs.com/package/ember-floating-mobile-buttons)
 [![npm version](https://badge.fury.io/js/ember-floating-mobile-buttons.svg)](https://badge.fury.io/js/ember-floating-mobile-buttons)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 [![Ember Observer Score](https://emberobserver.com/badges/ember-floating-mobile-buttons.svg)](https://emberobserver.com/addons/ember-floating-mobile-buttons)
