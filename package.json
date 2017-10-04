@@ -2,10 +2,7 @@
   "name": "ember-floating-mobile-buttons",
   "version": "0.0.3",
   "description": "Stylish and easy to use Ember floating buttons.",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yontxu/ember-floating-mobile-buttons"
-  },
+  "repository": "https://github.com/yontxu/ember-floating-mobile-buttons",
   "keywords": [
     "ember-addon",
     "button",
