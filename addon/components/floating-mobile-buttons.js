@@ -12,6 +12,9 @@ export default Ember.Component.extend({
   position: 'bottom right',
   didReceiveAttrs(){
     this._super(...arguments);
+
+    this.set('active', true);
+
     let classes = this.get('position').trim().split(" ");
     let vClasses = classes.filter( c => {
       if(c.match(/(bottom|top)/i)){
@@ -31,14 +34,12 @@ export default Ember.Component.extend({
     classes.forEach( c => {
         this.set(c, true);
     });
-  },
-  didInsertElement(){
-    this._super(...arguments);
-    this.set('active', true);
 
-    if(Ember.$(`#${this.get('elementId')} .floating-child-button`).length > 1){
-      this.set('hasChildren', true);
-    }
+    Ember.run.schedule('afterRender', () => {
+      if(Ember.$(`#${this.get('elementId')} .floating-child-button`).length > 1){
+        this.set('hasChildren', true);
+      }
+    });
   },
   actions: {
     toggleChildren(){
