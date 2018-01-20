@@ -1,7 +1,10 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { assert } from '@ember/debug';
+import { schedule } from '@ember/runloop';
+import $ from 'jquery';
 import layout from '../templates/components/floating-mobile-buttons';
 
-export default Ember.Component.extend({
+export default Component.extend({
   layout,
   tagName: 'ul',
   classNames: ['floating-buttons'],
@@ -28,15 +31,15 @@ export default Ember.Component.extend({
     });
 
     if(vClasses.length === 0 || vClasses.length > 1 || hClasses.length === 0 || hClasses.length > 1){
-      Ember.assert('The position property must be a string with the values top|bottom and left|right.');
+      assert('The position property must be a string with the values top|bottom and left|right.');
     }
 
     classes.forEach( c => {
         this.set(c, true);
     });
 
-    Ember.run.schedule('afterRender', () => {
-      if(Ember.$(`#${this.get('elementId')} .floating-child-button`).length > 1){
+    schedule('afterRender', () => {
+      if($(`#${this.get('elementId')} .floating-child-button`).length > 1){
         this.set('hasChildren', true);
       }
     });
