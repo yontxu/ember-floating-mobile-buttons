@@ -6,7 +6,9 @@
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 [![Ember Observer Score](https://emberobserver.com/badges/ember-floating-mobile-buttons.svg)](https://emberobserver.com/addons/ember-floating-mobile-buttons)
 
-Stylish and easy to use Ember floating buttons
+Stylish and easy to use Ember floating buttons.
+ 
+ More information in the [demo](https://yontxu.github.io/jekyll-floating-mobile-buttons/) site.
 
 ## Installation
 
@@ -38,7 +40,18 @@ You can additionally define child buttons which will be display grouped by the p
     {{/floating-mobile-child-buttons}}
 {{/floating-mobile-buttons}}
 ```
-As seen in the example above, you can combine it with you own icons.
+
+The `floating-mobile-buttons` component yields the clousure action `toggleChildren` so you are able to use it in your child components to toggle the child button group.
+
+```hbs
+{{#floating-mobile-buttons as |toggleChildren|}}
+    {{#floating-mobile-child-buttons label="Add Item"}}
+      <a href {{action toggleChildren}}>{{fa-icon "user"}}</a>
+    {{/floating-mobile-child-buttons}}
+{{/floating-mobile-buttons}}
+```
+
+As seen in the examples above, you can combine it with your own icon library.
 
 ## Properties
 
