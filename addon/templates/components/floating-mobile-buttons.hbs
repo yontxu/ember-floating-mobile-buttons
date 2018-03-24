@@ -1,7 +1,7 @@
 {{#if hasChildren}}
   <li>
     {{#floating-mobile-children-wrapper active=childrenActive toggleChildren=(action "toggleChildren")}}
-      {{yield}}
+      {{yield (action "toggleChildren")}}
     {{/floating-mobile-children-wrapper}}
   </li>
   <li>
@@ -11,6 +11,6 @@
   </li>
 {{else}}
   {{#floating-mobile-child-buttons}}
-    {{yield}}
+    {{yield (action "toggleChildren")}}
   {{/floating-mobile-child-buttons}}
 {{/if}}

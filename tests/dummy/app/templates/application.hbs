@@ -1,11 +1,11 @@
-{{#floating-mobile-buttons}}
+{{#floating-mobile-buttons as |toggleChildren|}}
     {{#floating-mobile-child-buttons label="Add Item"}}
-      <a href>{{fa-icon "user"}}</a>
+      <a href {{action toggleChildren}}>{{fa-icon "user"}}</a>
     {{/floating-mobile-child-buttons}}
     {{#floating-mobile-child-buttons label="Remove Item"}}
       <a href>{{fa-icon "trash-o"}}</a>
     {{/floating-mobile-child-buttons}}
     {{#floating-mobile-child-buttons label="Edit Item"}}
-      <a href>{{fa-icon "pencil"}}</a>
+      <a  href>{{fa-icon "pencil"}}</a>
     {{/floating-mobile-child-buttons}}
 {{/floating-mobile-buttons}}
